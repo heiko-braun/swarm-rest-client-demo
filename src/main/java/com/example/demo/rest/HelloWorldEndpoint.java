@@ -26,8 +26,6 @@ public class HelloWorldEndpoint {
 	@Produces("text/plain")
 	public Response doGetThroughFactory() {
 
-		System.out.println(RestClientBuilder.class.getClassLoader());
-
 		RestClientBuilder builder = RestClientBuilder.newBuilder();
 		try {
 			builder.baseUrl(new URL("http://httpbin.org"));
@@ -44,8 +42,6 @@ public class HelloWorldEndpoint {
 	@Produces("text/plain")
 	public Response doGetThroughBean() {
 
-		System.out.println(RestClientBuilder.class.getClassLoader());
-
 		String result = httpBinBean.doGet();
 		return Response.ok(result).build();
 
@@ -60,4 +56,5 @@ public class HelloWorldEndpoint {
 		@Produces("text/plain")
 		String doGet();
 	}
+
 }
